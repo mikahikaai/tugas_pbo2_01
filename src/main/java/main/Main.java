@@ -42,18 +42,21 @@ public class Main {
             }
             menu();
             pos = sc.nextInt();
+            sc.nextLine();
 
         }
     }
 
     static void menu() {
-        System.out.println("~~Menu Pilihan~~");
-        System.out.println("-------------------");
+        System.out.println("--------------------");
+        System.out.println("~~~ Menu Pilihan ~~~");
+        System.out.println("--------------------");
         System.out.println("1. Tambah Data");
         System.out.println("2. Lihat Data");
         System.out.println("3. Ubah Data");
         System.out.println("4. Hapus Data");
         System.out.println("5. Keluar");
+        System.out.println("--------------------");
         System.out.println("");
 
         System.out.println("Masukkan pilihan anda : ");
@@ -62,23 +65,27 @@ public class Main {
     static void tambah() {
         System.out.println("Masukkan Judul Film : ");
         film1.setNama(sc.nextLine());
+        System.out.println("");
         System.out.println("Masukkan Tahun Film : ");
         film1.setTahun(sc.nextInt());
         sc.nextLine();
+        System.out.println("");
         System.out.println("Masukkan Direktur Film : ");
         film1.setDirector(sc.nextLine());
+        System.out.println("");
         System.out.println("Masukkan Genre Film : ");
         film1.setGenre(sc.nextLine());
+        System.out.println("");
         film1.insertData();
     }
 
     static void baca() {
-        film1.bacaData();
+        film1.readData();
     }
 
     static void ubah() {
         try {
-            film1.bacaData();
+            film1.readData();
             System.out.println("Pilih nomor yang ingin diubah : ");
             film1.setId(String.valueOf(Film.posId.get(Integer.parseInt(sc.nextLine()) - 1)));
             String sql = "select * from film where id=?";
@@ -87,7 +94,7 @@ public class Main {
             ResultSet rs = pst.executeQuery();
             rs.next();
 
-            System.out.println("Masukkan Judul Film Baru : ");
+            System.out.println("Masukkan Judul Film Baru : [KOSONGKAN JIKA TIDAK ADA PERUBAHAN]");
             String judul = sc.nextLine();
             if (judul.equalsIgnoreCase("")) {
                 film1.setNama(rs.getString(2));
@@ -98,7 +105,7 @@ public class Main {
             }
             System.out.println("");
 
-            System.out.println("Masukkan Tahun Film Baru : ");
+            System.out.println("Masukkan Tahun Film Baru : [KOSONGKAN JIKA TIDAK ADA PERUBAHAN]");
             String tahun = sc.nextLine();
             if (tahun.equalsIgnoreCase("")) {
                 film1.setTahun(Integer.parseInt(rs.getString(3)));
@@ -108,7 +115,7 @@ public class Main {
             }
             System.out.println("");
 
-            System.out.println("Masukkan Direktur Film Baru : ");
+            System.out.println("Masukkan Direktur Film Baru : [KOSONGKAN JIKA TIDAK ADA PERUBAHAN]");
             String director = sc.nextLine();
             if (director.equalsIgnoreCase("")) {
                 film1.setDirector(rs.getString(4));
@@ -118,7 +125,7 @@ public class Main {
             }
             System.out.println("");
 
-            System.out.println("Masukkan Genre Film Baru : ");
+            System.out.println("Masukkan Genre Film Baru : [KOSONGKAN JIKA TIDAK ADA PERUBAHAN]");
             String genre = sc.nextLine();
             if (genre.equalsIgnoreCase("")) {
                 film1.setGenre(rs.getString(5));
@@ -134,7 +141,7 @@ public class Main {
     }
 
     static void hapus() {
-        film1.bacaData();
+        film1.readData();
         System.out.println("Pilih nomor yang ingin dihapus : ");
         film1.setId(String.valueOf(Film.posId.get(Integer.parseInt(sc.nextLine()) - 1)));
         film1.deleteData();

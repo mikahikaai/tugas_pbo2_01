@@ -78,9 +78,9 @@ public class Film {
         System.out.println("");
     }
 
-    public void bacaData() {
+    public void readData() {
         try {
-            String sql = "select * from film order by id asc";
+            String sql = "select * from film order by tahun asc";
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
             System.out.println("-------------------------------------------------------------------");
