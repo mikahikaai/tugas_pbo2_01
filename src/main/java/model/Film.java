@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import pengaturan.Koneksi;
 
 public class Film {
@@ -13,7 +14,8 @@ public class Film {
     private String director;
     private String genre;
     private String id;
-    private Connection conn = new Koneksi().getKoneksi();
+    private final Connection conn = new Koneksi().getKoneksi();
+    public static ArrayList<Integer> posId = new ArrayList<>();
 
     public String getId() {
         return id;
@@ -84,10 +86,11 @@ public class Film {
             System.out.println("-------------------------------------------------------------------");
             System.out.println("No.\t|Nama\t\t|Tahun\t|Direktur\t\t|Genre");
             System.out.println("-------------------------------------------------------------------");
-            int no = 1;
+            int no = 1;            
             while (rs.next()) {
                 System.out.println(no+"\t|"+rs.getString(2) + "\t\t|" + rs.getString(3)
                         + "\t|" + rs.getString(4) + "\t\t|" + rs.getString(5));
+                posId.add(Integer.parseInt(rs.getString(1)));
                 no++;
             }
             System.out.println("-------------------------------------------------------------------");
