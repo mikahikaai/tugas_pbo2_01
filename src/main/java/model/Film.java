@@ -84,7 +84,7 @@ public class Film {
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
             System.out.println("-------------------------------------------------------------------");
-            System.out.println("No.\t|Nama\t\t|Tahun\t|Direktur\t\t|Genre");
+            System.out.println("No.\t|Judul\t\t|Tahun\t|Direktur\t\t|Genre");
             System.out.println("-------------------------------------------------------------------");
             int no = 1;            
             while (rs.next()) {
