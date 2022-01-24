@@ -11,13 +11,10 @@
                 <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
                     <archive>
-                        <manifestEntries>
-                            <SplashScreen-Image>./src/main/java/com/uaspbo2/uas_pbo2_19710116/Spinner-1.5s-191px.gif</SplashScreen-Image>
-                            <manifest>
-                                <addClasspath>true</addClasspath>
-                                <mainClass>com.uaspbo2.uas_pbo2_19710116.HalamanUtama</mainClass>
-                            </manifest>
-                        </manifestEntries>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>com.uaspbo2.uas_pbo2_19710116.HalamanUtama</mainClass>
+                        </manifest>
                     </archive>
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
