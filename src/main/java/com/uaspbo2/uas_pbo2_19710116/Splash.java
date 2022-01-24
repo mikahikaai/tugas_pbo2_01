@@ -5,6 +5,8 @@
  */
 package com.uaspbo2.uas_pbo2_19710116;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -17,26 +19,13 @@ public class Splash extends javax.swing.JFrame {
     /**
      * Creates new form Splash
      */
-    public Splash() {
-        initComponents();
-        jLabel1.setIcon(icon);
-    }
-
-    String url = "./src/main/java/com/uaspbo2/uas_pbo2_19710116/Spinner-1.5s-191px.gif";
+    String url = "images/load.gif";
     String desc = "Spinner";
     ImageIcon icon = new ImageIcon(url, desc);
 
-    public static void sleepThread() {
-        new Splash().setVisible(true);
-        try {
-            for (int p = 0; p <= 100; p++) {
-                Thread.sleep(40);
-                //jProgressBar1.setValue(p);
-                //jLabel2.setText("Loading Please Wait..."+(Integer.toString(p))+"%");
-            }
-        } catch (Exception e) {
-            System.out.println(e.toString());
-        }
+    public Splash() {
+        initComponents();
+        jLabel1.setIcon(icon);
     }
 
 //    protected ImageIcon createImageIcon(String path, String description) {
@@ -62,13 +51,18 @@ public class Splash extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setOpacity(0.8F);
         setResizable(false);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                formKeyReleased(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 255), 3));
+        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 255), 3, true));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Dropbox\\link ksna kemari\\uas_pbo2_19710116\\src\\main\\java\\com\\uaspbo2\\uas_pbo2_19710116\\Spinner-1.5s-191px.gif")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -98,6 +92,10 @@ public class Splash extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(770, 413));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formKeyReleased
 
     /**
      * @param args the command line arguments
@@ -132,17 +130,28 @@ public class Splash extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        sleepThread();
+        Splash sp = new Splash();
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-                new HalamanUtama().setVisible(true);
+                sp.setVisible(true);
             }
         });
+        
+        HalamanUtama hu = new HalamanUtama();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Splash.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        new Splash().setVisible(false);
+        hu.setVisible(true);
+        sp.dispose();
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    public static javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

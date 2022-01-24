@@ -13,8 +13,11 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>com.uaspbo2.uas_pbo2_19710116.HalamanUtama</mainClass>
+                            <mainClass>com.uaspbo2.uas_pbo2_19710116.Splash</mainClass>
                         </manifest>
+<!--                        <manifestEntries>
+                            <SplashScreen-Image>images/load.gif</SplashScreen-Image>
+                        </manifestEntries>-->
                     </archive>
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>

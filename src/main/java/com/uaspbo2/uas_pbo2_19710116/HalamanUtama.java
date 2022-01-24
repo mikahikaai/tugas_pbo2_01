@@ -20,6 +20,7 @@ public class HalamanUtama extends javax.swing.JFrame {
     public HalamanUtama() {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
+        
     }
     
     MobilView mobilView = new MobilView();
